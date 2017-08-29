@@ -1,0 +1,28 @@
+### NOTES ###
+Window
+Board
+Red chip
+Blue chip
+Double blue chip
+Double red chip
+
+Drag and drop chips or click on ship then click where to move??
+
+### Text Boxes ###
+Start Menu - 2 player button, 1 player button (maybe)
+           - 8x8 (12 chips), 10x10 (20 chips), 12x12 (30 chips)		
+End Game - Would you like to play again? --> Start Menu, Exit
+Bad move - You cannot move that chip here
+
+Build window
+Build board 10x10 
+place red chips on board. Every second square
+place blue chip on board. Every second square
+
+
+
+
+
+
+
+
