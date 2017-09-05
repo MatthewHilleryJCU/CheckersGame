@@ -3,13 +3,16 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GridPanel extends JPanel {
-  private Color bgColor=Color.BLUE;
-  private Color clickedColor=Color.RED;
+  private Color bgColor;
+  private Color clickedColor;
   public void setClickedColor(Color color) {
     this.clickedColor=color;
   }
   public void setBgColor(Color color) {
     this.bgColor=color;
+    setBackground(color);
+    System.out.println("set bg to " +color.toString()+" "+bgColor.toString());
+    repaint();
   }
   public Color getClickedColor() {
     return this.clickedColor;
@@ -18,6 +21,9 @@ public class GridPanel extends JPanel {
     return this.bgColor;
   }
   public GridPanel(int size) {
+    bgColor=Color.BLUE;
+    clickedColor=Color.RED;
+    setOpaque(true);
     addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e) {
         int modifiers = e.getModifiers();

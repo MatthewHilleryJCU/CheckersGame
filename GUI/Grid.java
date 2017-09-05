@@ -2,6 +2,7 @@ import java.util.*;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 public class Grid extends ConservedRatioPanel {
   public ArrayList<GridPanel> gridPanels;
@@ -19,6 +20,12 @@ public class Grid extends ConservedRatioPanel {
     setPreferredSize(new Dimension(gN_Width*panelSize,gN_Height*panelSize));
     setRatio(gN_Width*panelSize,gN_Height*panelSize);
     for(int i=0; i<nPanels; i++) {
+      GridPanel gp = new GridPanel(panelSize);
+      if(i%2==0) {
+        gp.setBgColor(Color.BLACK);
+      } else {
+        gp.setBgColor(Color.WHITE);
+      }
       gridPanels.add(new GridPanel(panelSize));
     }
     addGridPanels();

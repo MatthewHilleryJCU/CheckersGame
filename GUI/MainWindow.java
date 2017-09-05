@@ -3,22 +3,24 @@ import javax.swing.*;
 
 public class MainWindow {
 private JFrame frame;
+private JPanel main;
   public void repaint() {
     frame.repaint();
   }
   public void addComponent(Component c) {
-    frame.add(c);
+    main.add(c);
     c.setVisible(true);
     repaint();
   }
    public MainWindow(int winSizeX,int winSizeY) {
      frame = new JFrame("Main");
+     main = new JPanel();
+     frame.add(main);
      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     //JLabel textLabel = new JLabel("Main",SwingConstants.CENTER);
      frame.setPreferredSize(new Dimension(winSizeX, winSizeY));
-     //frame.getContentPane().add(textLabel, BorderLayout.CENTER);
      frame.setLocationRelativeTo(null);
      frame.pack();
      frame.setVisible(true);
+     frame.setMinimumSize(frame.getSize());
    }
 }
