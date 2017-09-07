@@ -1,26 +1,50 @@
 import java.awt.*;
 import javax.swing.*;
+import java.util.*;
 
-public class MainWindow {
-private JFrame frame;
-private JPanel main;
-  public void repaint() {
-    frame.repaint();
-  }
+public class MainWindow extends JFrame {
+// COMPONENTS:
+  private JPanel main;
+  private GamePanel gamePanel;
+
+// PARAMS:
+  private static final int padding=50;
+
+//METHODS:
+
   public void addComponent(Component c) {
     main.add(c);
     c.setVisible(true);
-    repaint();
+    main.repaint();
   }
-   public MainWindow(int winSizeX,int winSizeY) {
-     frame = new JFrame("Main");
+
+   public MainWindow() {
+     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     setLocationRelativeTo(null);
+     setVisible(true);
+     setLayout(new FlowLayout());
+
      main = new JPanel();
-     frame.add(main);
-     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     frame.setPreferredSize(new Dimension(winSizeX, winSizeY));
-     frame.setLocationRelativeTo(null);
-     frame.pack();
-     frame.setVisible(true);
-     frame.setMinimumSize(frame.getSize());
+     add(main);
+     main.setLayout(new FlowLayout()); //TODO set constraints
+     setContentPane(main);
+
+     gamePanel = new GamePanel();
+     addComponent(gamePanel);
+     //TODO SideBar
+     //TODO ContextMenu
+
+     main.revalidate();
+     main.repaint();
+     //setResizable(false);
+     pack();
+     Dimension packedSize=new Dimension(getSize().width+padding, getSize().height+padding);
+     setMinimumSize(packedSize);
+     //System.out.println(this.getClass().getSimpleName()+" "+this.getPreferredSize());
+     //System.out.println("DEBUG:Rendered Size: "+this.getClass().getSimpleName()+": "+this.getSize());
+    setBackground(Color.GREEN);
+     revalidate();
+     repaint();
+
    }
 }
