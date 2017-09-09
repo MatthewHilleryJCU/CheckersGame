@@ -3,8 +3,9 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GridPanel extends JPanel {
-  private Color bgColor;
+  protected Color bgColor;
   private int index;
+
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
   }
@@ -50,7 +51,7 @@ public class GridPanel extends JPanel {
   setSize(s);
   setMinimumSize(s);
   setPreferredSize(s);
-  System.out.println(this.getClass().getSimpleName()+" "+this.getPreferredSize());
-  System.out.println("DEBUG:Rendered Size: "+this.getClass().getSimpleName()+": "+this.getSize());
+  //System.out.println(this.getClass().getSimpleName()+" "+this.getPreferredSize());
+  //System.out.println("DEBUG:Rendered Size: "+this.getClass().getSimpleName()+": "+this.getSize());
   }
 }
