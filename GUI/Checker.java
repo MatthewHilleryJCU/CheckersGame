@@ -18,10 +18,17 @@ private MainWindow frame;
 public Boolean userControlled;
 @Override
 public void paintComponent(Graphics g) {
-  int gx = getX()-(getBounds().height/2);
-  int gy = getY()-(getBounds().width/2);
-  g.fillOval(gx,gy,getBounds().width,getBounds().height);
-  super.paintComponent(g);
+           super.paintComponent(g);
+           int radius = getWidth();
+           int xOffset = 0;
+           int yOffset = 0;
+           Graphics2D g2d = (Graphics2D) g.create();
+           g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+           g2d.setColor(this.color);
+           g2d.fillOval(xOffset, yOffset, radius, radius);
+           g2d.setColor(Color.BLACK);
+           g2d.drawOval(xOffset, yOffset, radius, radius);
+           g2d.dispose();
 }
 @Override
 public void setIndex(int idx) {
@@ -56,7 +63,7 @@ public Checker(int size, Color bg, Ch_Color _color, Ch_Type _type, int gpindex, 
   this.type=_type;
   this.gpIndex=gpindex;
   this.alive=true;
-  setBackground(this.color);
+  setBackground(bg);
   frame.insertComponentIntoLayer(this, 1);
   this.validate();
 //  System.out.println(this.getClass().getSimpleName()+" "+this.getPreferredSize());
@@ -69,8 +76,11 @@ public Checker(int size, Color bg, Ch_Color _color, Ch_Type _type, int gpindex, 
        screenY = e.getYOnScreen();
        myX = (int)getX();
        myY = (int)getY();
+       objRef.setBackground(((Checker)e.getSource()).getBgColor());
+       ((Checker)e.getSource()).setOpaque(false);
           }
      public void mouseReleased(MouseEvent e) {
+       ((Checker)e.getSource()).setOpaque(true);
        GridPanel lc = sup.getGrid(getLocation(), gpIndex);
        if(sup.validGrid((GridPanel)e.getSource(),lc)) {
          sup.moveChecker(((Checker)e.getSource()).getIndex(),lc.getIndex());
@@ -99,6 +109,7 @@ public Checker(int size, Color bg, Ch_Color _color, Ch_Type _type, int gpindex, 
                                   )
                     );
    setVisible(true);
+   setOpaque(true);
    repaint();
  }
 }
